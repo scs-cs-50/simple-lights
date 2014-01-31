@@ -21,7 +21,9 @@ foreach ($_REQUEST as $code => $state) {
 <html> 
 	<head> 
 		<title>Lights</title> 
-		<link rel="stylesheet" href="//code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css" />
+		<link rel="stylesheet" href="themes/lights.min.css" />
+		<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+		<link rel="stylesheet" href="//code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css" />
 		<link rel=apple-touch-icon href="lights.png" />
 		<script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="//code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
@@ -32,29 +34,24 @@ foreach ($_REQUEST as $code => $state) {
        	<h1>Lights</h1>
      	</div>
 			<div data-role="content">
-				<form data-ajax='false'>
-					<ul data-role="listview">
+				<form method="POST">
 <?php
 	foreach ($lights as $code => $name) {
 ?>
-						<li data-role="fieldcontain">
-				    	<label for="<?php echo $code; ?>"><?php echo $name; ?>:</label>
-							<select name="<?php echo $code; ?>" id="<?php echo $code; ?>" data-role="slider">
-								<option selected="selected" value="OFF">Off</option>
-								<option value="ON">On</option>
-							</select>
-						</li>
+					<fieldset>
+						<div data-role="fieldcontain">
+						<label for="sw-<?php echo $code; ?>"><?php echo $name; ?></label>
+							<input type="checkbox" name="sw-<?php echo $code; ?>" id="sw-<?php echo $code; ?>" data-role="flipswitch">
+					  </div>
+					</fieldset>
 <?php
 	}
 ?>
-						<li class="ui-body ui-body-b">
-							<fieldset class="ui-grid-a">
-								<div class="ui-block-b">
-									<button type="submit" data-theme="a">Submit</button>
-								</div>
-							</fieldset>
-						</li>
-					</ul>
+					<fieldset class="ui-grid-a">
+						<div class="ui-block-b">
+							<input type="submit" data-theme="a" value="Submit">
+						</div>
+					</fieldset>
 				</form>
 			</div> 
 		</div>
